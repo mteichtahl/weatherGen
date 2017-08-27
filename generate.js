@@ -1,6 +1,6 @@
 #!/usr/local/bin/node
 /*
- * Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,13 +14,8 @@
  * permissions and limitations under the License.
  */
 
-/*
- * NOTE: You must set the following string constants prior to running this
- * example application.
- */
-
 'use strict'
-var DEBUG = true
+var DEBUG = false
 var self = this
 
 if (!DEBUG) {
@@ -34,22 +29,16 @@ var cli = require('cli')
 var crypto = require('crypto')
 
 var options = cli.parse({
-  station: ['s', 'Station id', 'string', false],
-  device: ['d', 'Device Id', 'string', false],
+  // station: ['s', 'Station id', 'string', false],
+  sensor: ['s', 'Sensor Id', 'string', false],
   state: ['t', 'State', 'string', 'false'],
   city: ['c', 'City', 'string', false],
-  longtitude: ['lng', 'Longtitude', 'string', false],
-  latitude: ['lat', 'Latitude', 'string', false],
-  test: ['t', 'Run in test mode']
+  longtitude: ['longtitude', 'Longtitude', 'string', false],
+  latitude: ['latitude', 'Latitude', 'string', false]
 })
 
-if (options.station == undefined || !options.station) {
-  console.log('A station id must be supplied')
-  process.exit(1)
-}
-
-if (options.device == undefined || !options.device) {
-  console.log('A device id must be supplied')
+if (options.sensor == undefined || !options.sensor) {
+  console.log('A sensor id must be supplied')
   process.exit(1)
 }
 
@@ -87,7 +76,7 @@ log.init({
   name: 'weatherGen'
 })
 
-var deviceIdHash = crypto.createHash('sha256').update(options.device).digest('hex').toString()
+var deviceIdHash = crypto.createHash('sha256').update(options.sensor).digest('hex').toString()
 
 var rainfall = new Rainfall('rain', 'rainfall', deviceIdHash.substr(0, 16))
 var temperature = new Temperature('temp', 'temperature', deviceIdHash.substr(16, 16))
