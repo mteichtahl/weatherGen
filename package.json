@@ -1,16 +1,13 @@
 {
-  "name": "sensor-server",
+  "name": "weatherGen",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node api.js"
-  },
+  "description": "Generates MQTT streams containing weather data",
+  "main": "generate.js",
   "config": {
     "port": "8080"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Marc Teichtahl <teichtah@amazon.com>",
+  "license": "Apache-2.0",
   "dependencies": {
     "Q": "0.0.1",
     "aws-iot-device-sdk": "^1.0.12",
