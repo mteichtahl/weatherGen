@@ -16,8 +16,6 @@
 
 module.exports = {
   mqtt: {
-    // type: 'redis',
-    // url: 'redis://localhost:6379/mqtt',
     pubsubCollection: 'ascoltatori',
     redis: {},
     wsServer: {
@@ -27,7 +25,7 @@ module.exports = {
   },
   forecast: {
     // replace with your own apiKey from forecast.io
-    apiKey: '2893d8cf367d5827de7f62d1a87c4cb8',
+    apiKey: 'xxxxxxxxxxxxxxxxxxxxx',
     url: 'api.forecast.io'
   }
 }
